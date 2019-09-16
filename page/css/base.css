@@ -1,0 +1,194 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: 'MyIcon';
+    src: url("../font/glyphicons-halflings-regular.woff2");
+}
+
+body{
+    background-image: url("../img/bg.jpg");
+    position: relative;
+    text-align: center;
+}
+.header{
+    width: 100%;
+    height: 50px;
+    background: #191818;
+}
+.container{
+    position: relative;
+    width: 1170px;
+    height: 50px;
+    margin: 0 auto;
+}
+.title{
+    display: inline-block;
+    float: left;
+    color: #eeeeee;
+    line-height: 50px;
+    margin: 0 15px;
+    font-size: 18px;
+}
+.menu{
+    float: left;
+}
+.menu > li{
+    display: inline-block;
+    float: left;
+    height: 50px;
+    width: 58px;
+    color: #eeeeee;
+    font-size: 14px;
+    line-height: 50px;
+}
+.menu > li > a{
+    color: white;
+}
+
+.search_bar > input{
+    display: inline-block;
+    position: absolute;
+    height: 22px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    border: 1px solid;
+    top: 50%;
+    margin-top: -18px;
+}
+
+.search_bar > button{
+    display: inline-block;
+    position: absolute;
+    width: 54px;
+    height: 34px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    top: 50%;
+    margin-top: -18px;
+    outline: none;
+    color: #555555;
+    right: 0;
+    background: white;
+}
+.content{
+    display: inline-block;
+    position: relative;
+    width: 1170px;
+    margin: 30px auto 0 auto;
+}
+
+.content_left{
+    float: left;
+    width: 66%;
+    padding: 0 20px 0 0;
+    box-sizing: border-box;
+}
+
+.content_right{
+    float: right;
+    width: 34%;
+    padding: 0 0 0 0;
+}
+
+.right_module{
+    display: inline-block;
+    width: 100%;
+    background: #1f1f1f;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    padding: 0 15px 25px 15px;
+    margin-bottom: 20px;
+}
+/*最近热门*/
+.right_module div{
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    padding: 15px 5px 15px 0;
+    color:dodgerblue;
+}
+.right_module > a{
+    display: inline-block;
+    font-size: 14px;
+    color: dodgerblue;
+    margin-right: 5px;
+}
+
+.right_module > ul > li{
+    color: white;
+    padding: 8px 0;
+    border-bottom: 1px solid #292929;
+}
+
+.right_module > ul > li > a{
+    font-size: 14px;
+    color: white;
+}
+
+/*最新评论*/
+.right_module > ul > li > div{
+    padding: 5px 0;
+}
+.right_module > ul > li > div > span{
+    font-size: 14px;
+    color: white;
+}
+.right_module > ul > li > p{
+    font-size: 14px;
+    color: #777777;
+}
+
+.pull_right{
+    position: absolute;
+    right: 15px;
+}
+
+/*友情链接*/
+.right_module > span{
+    display: inline-block;
+    width: 50%;
+    height: 30px;
+    margin-top: 10px;
+}
+.right_module > span > a{
+    color: white;
+    line-height: 30px;
+}
+
+/*最底部*/
+.footer{
+    width: 100%;
+    height: 60px;
+    background: #191818;
+    text-align: center;
+    padding: 20px;
+}
+
+.footer > ul{
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer > ul > li{
+    display: inline-block;
+    color: #a2a2a2;
+    float: left;
+    font-size: 14px;
+    margin-left: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.footer > p{
+    margin-top: 10px;
+    color: white;
+}
