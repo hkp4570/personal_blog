@@ -1,3 +1,4 @@
+
 var everyDay = new Vue({
     el:'#every_day',
     data:{
@@ -8,9 +9,16 @@ var everyDay = new Vue({
             return this.content;
         }
     },
-   created:function () {
-       //请求数据
-   }
+    created: function () {
+        axios({
+            method: "get",
+            url: "/queryEveryDay"
+        }).then(function(resp) {
+            everyDay.content = resp.data.data[0].content;
+        }).catch(function (resp) {
+            console.log("请求失败");
+        });
+    }
 });
 
 var articleList = new Vue({
