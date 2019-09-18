@@ -11,6 +11,9 @@ app.post('/editEveryDay',loader.get('/editEveryDay'));
 // 从数据库中拿到每日一句
 app.get('/queryEveryDay',loader.get('/queryEveryDay'));
 
+//编辑博客文章
+app.post('/editBlog',loader.get('/editBlog'));
+
 app.listen(globalConfig.port,function () {
     console.log('服务已启动');
 });

@@ -1,18 +1,17 @@
 var dbutil = require('./dbutil');
 
 // 每日一句插入
-function insertEveryDay(content,ctime,success){
+function insertEveryDay(content, ctime, success) {
     var insertSql = "insert into every_day (`content`, `ctime`) values (?, ?)";
-    var params = [content,ctime];
-
+    var params = [content, ctime];
     var connection = dbutil.createConnection();
     connection.connect();
-    connection.query(insertSql,params,function(error,result){
-        if(error == null){
+    connection.query(insertSql, params, function (error, result) {
+        if (error == null) {
             success(result);
-        }else{
+        } else {
             console.log(error);
-            
+
         }
     });
     connection.end();
@@ -20,17 +19,16 @@ function insertEveryDay(content,ctime,success){
 
 
 // 每日一句查询
-function queryEveryDay(success){
+function queryEveryDay(success) {
     var querySql = "select * from every_day order by id desc limit 1;";
     var params = [];
     var connection = dbutil.createConnection();
     connection.connect();
-    connection.query(querySql,params,function(error,result){
-        if(error == null){
+    connection.query(querySql, params, function (error, result) {
+        if (error == null) {
             success(result);
-        }else{
+        } else {
             console.log(error);
-            
         }
     });
     connection.end();
