@@ -2,7 +2,7 @@ var dbutil = require('./dbutil');
 
 //博客文章插入
 function insertBlog(title, content, views, tags, ctime, utime, success) {
-    var insertSql = "insert into every_day (`title`, `content`,`views`, `tags`,`ctime`, `utime`) values (?, ?, ?, ?, ?, ?)";
+    var insertSql = "insert into blog (`title`, `content`,`views`, `tags`,`ctime`, `utime`) values (?, ?, ?, ?, ?, ?)";
     var params = [title,content,views,tags,ctime,utime];
     var connection = dbutil.createConnection();
     connection.connect();

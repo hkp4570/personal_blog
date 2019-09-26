@@ -58,6 +58,13 @@ var articleList = new Vue({
 
     },
     created: {
-
+        axios:({
+            method:'get',
+            url:'/queryBold'
+        }).then(function (res) {
+            console.log(res);
+        }).catch(function (err) {
+            console.log('请求失败');
+        })
     }
 });

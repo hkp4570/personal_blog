@@ -8,11 +8,13 @@ app.use(express.static('./page/'));
 
 // 编辑每日一句
 app.post('/editEveryDay',loader.get('/editEveryDay'));
-// 从数据库中拿到每日一句
+//  从数据库中拿到每日一句
 app.get('/queryEveryDay',loader.get('/queryEveryDay'));
 
 //编辑博客文章
 app.post('/editBlog',loader.get('/editBlog'));
+//读取博客文章
+
 
 app.listen(globalConfig.port,function () {
     console.log('服务已启动');
