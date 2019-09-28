@@ -24,6 +24,9 @@ var everyDay = new Vue({
 var articleList = new Vue({
     el: '#article_list',
     data: {
+        page:1,
+        pageSize:1,
+        count:100,
         articleList: [
             {
                 title: '乱码表，看懂常见编码乱码',
@@ -55,9 +58,21 @@ var articleList = new Vue({
         ]
     },
     computed: {
+        getPage:function () {
+            return function (page,pageSize) {
+                axios({
+                    method:'get',
+                    url:'/queryBlogByPage?page=' + (page-1) + '&pageSize=' + pageSize,
 
+                }).then(function (resp) {
+                    console.log(resp);
+                }).catch(function (resp) {
+                    console.log('请求错误');
+                })
+            }
+        }
     },
-    created: {
-
+    created:function () {
+        this.getPage(this.page,this.pageSize);
     }
 });

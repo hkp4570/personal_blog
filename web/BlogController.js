@@ -6,6 +6,19 @@ var respUtil = require('../util/respUtil');
 var url = require('url');
 var path = new Map();
 
+//查询文章
+function queryBlogByPage(request,response) {
+    var params = url.parse(request.url,true).query;
+    console.log(params);
+    blogDao.queryBlogByPage(parseInt(params.page),parseInt(params.pageSize),function(result){
+        response.writeHead(200);
+        response.write(respUtil.writeResult('success','查询成功 ',result));
+        response.end();
+    })
+}
+path.set('/queryBlogByPage',queryBlogByPage);
+
+//编辑文章
 function editBlog(request,response) {
     var params = url.parse(request.url,true).query;
     var tags = params.tags.replace(/ /g, '').replace('，',',');
