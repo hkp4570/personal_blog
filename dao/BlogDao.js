@@ -18,7 +18,7 @@ function insertBlog(title, content, views, tags, ctime, utime, success) {
 }
 //读取博客文章
 function queryBlogByPage(page,pageSize,success) {
-    var insertSql = "select * from blog order by id desc limit ?, ?;";
+    var insertSql = "select * from blog order by id desc limit ?,?";
     var params = [page * pageSize ,pageSize];
     var connection = dbutil.createConnection();
     connection.connect();
