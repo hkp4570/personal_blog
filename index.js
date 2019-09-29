@@ -14,6 +14,7 @@ app.get('/queryEveryDay',loader.get('/queryEveryDay'));
 //编辑博客文章
 app.post('/editBlog',loader.get('/editBlog'));
 //读取博客文章
+app.get('/queryBolgByPage',loader.get('/queryBolgByPage'));
 
 
 app.listen(globalConfig.port,function () {

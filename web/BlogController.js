@@ -7,6 +7,17 @@ var respUtil = require('../util/respUtil');
 var url = require('url');
 var path = new Map();
 
+//读取博客文章
+function queryBolgByPage(request,response) {
+    var params = url.parse(request.url,true).query;
+    blogDao.queryBlogByPage(parseInt(params.page),parseInt(params.pageSize),function (result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult('success','查询成功',result));
+        response.end();
+    })
+}
+path.set('/queryBolgByPage',queryBolgByPage);
+
 function editBlog(request,response) {
     var params = url.parse(request.url,true).query;
     var tags = params.tags.replace(/ /g, '').replace('，',',');
