@@ -24,6 +24,16 @@ function queryBolgByPage(request,response) {
 }
 path.set('/queryBolgByPage',queryBolgByPage);
 
+//读取所有文章数量
+function queryBlogCount(request, response) {
+    blogDao.queryBlogCount(function (result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "查询成功", result));
+        response.end();
+    });
+}
+path.set('/queryBlogCount',queryBlogCount);
+
 function editBlog(request,response) {
     var params = url.parse(request.url,true).query;
     var tags = params.tags.replace(/ /g, '').replace('，',',');

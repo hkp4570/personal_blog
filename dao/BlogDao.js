@@ -33,5 +33,23 @@ function queryBlogByPage(page,pageSize,success) {
     connection.end();
 }
 
+//查询所有博客文章数量
+function queryBlogCount(success) {
+    var insertSql = "select count(1) as count from blog;";
+    var params = [];
+    var connection = dbutil.createConnection();
+    connection.connect();
+    connection.query(insertSql, params, function (error, result) {
+        if (error == null) {
+            success(result);
+        } else {
+            console.log(error);
+
+        }
+    });
+    connection.end();
+}
+
 module.exports.insertBlog = insertBlog;
 module.exports.queryBlogByPage = queryBlogByPage;
+module.exports.queryBlogCount = queryBlogCount;

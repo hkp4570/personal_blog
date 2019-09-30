@@ -15,7 +15,8 @@ app.get('/queryEveryDay',loader.get('/queryEveryDay'));
 app.post('/editBlog',loader.get('/editBlog'));
 //读取博客文章
 app.get('/queryBolgByPage',loader.get('/queryBolgByPage'));
-
+//读取博客文章所有数量
+app.get('/queryBlogCount',loader.get('/queryBlogCount'));
 
 app.listen(globalConfig.port,function () {
     console.log('服务已启动');
