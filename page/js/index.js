@@ -25,7 +25,7 @@ var articleList = new Vue({
     el: '#article_list',
     data: {
         page:0,
-        pageSize:3,
+        pageSize:5,
         articleList: [
             {
                 title: '乱码表，看懂常见编码乱码',
@@ -44,7 +44,7 @@ var articleList = new Vue({
             return function (page,pageSize) {
                 axios({
                     method:'get',
-                    url:'/queryBolgByPage?page=' + (page + 1) + '&pageSize=' + pageSize
+                    url:'/queryBolgByPage?page=' + page + '&pageSize=' + pageSize
                 }).then(function (resp) {
                     var result = resp.data.data;
                     var list = [];
@@ -52,7 +52,7 @@ var articleList = new Vue({
                         var temp = {};
                         temp.title = result[i].title;
                         temp.content = result[i].content;
-                        temp.date = result[i].ctime;
+                        temp.date = new Date(result[i].ctime * 1000).toLocaleDateString().replace(/\//g,'-');
                         temp.views = result[i].views;
                         temp.tags = result[i].tags;
                         temp.id = result[i].id;

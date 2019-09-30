@@ -11,11 +11,12 @@ var path = new Map();
 function queryBolgByPage(request,response) {
     var params = url.parse(request.url,true).query;
     blogDao.queryBlogByPage(parseInt(params.page),parseInt(params.pageSize),function (result) {
-        console.log(result);
-        //过滤图片
-        // result[i].content = result[i].content.replace(/<img[\w\W]*>/,'');
-        // result[i].content = result[i].content.replace(/<[\w\W]{1,5}>/g,'');
-        // result[i].content = result[i].content.substring(0,300);
+        //过滤图片   固定长度
+        for (var i = 0; i < result.length; i++) {
+            result[i].content = result[i].content.replace(/<img[\w\W]*>/,'');
+            result[i].content = result[i].content.replace(/<[\w\W]{1,5}>/g,'');
+            result[i].content = result[i].content.substring(0,300);
+        }
         response.writeHead(200);
         response.write(respUtil.writeResult('success','查询成功',result));
         response.end();
