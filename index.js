@@ -17,6 +17,20 @@ app.post('/editBlog',loader.get('/editBlog'));
 app.get('/queryBolgByPage',loader.get('/queryBolgByPage'));
 //读取博客文章所有数量
 app.get('/queryBlogCount',loader.get('/queryBlogCount'));
+//博客文章详情
+app.get('/queryBlogById',loader.get('/queryBlogById'));
+
+//添加留言
+app.get('/addComment',loader.get('/addComment'));
+
+//获取随机验证码
+app.get('/queryRandomCode',loader.get('/queryRandomCode'));
+
+//获取留言
+app.get('/queryCommentsByBlogId',loader.get('/queryCommentsByBlogId'));
+
+//获取留言条数
+app.get('/queryCommentsCountByBlogId',loader.get('/queryCommentsCountByBlogId'));
 
 app.listen(globalConfig.port,function () {
     console.log('服务已启动');

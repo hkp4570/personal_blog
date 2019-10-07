@@ -1,53 +1,28 @@
-.description{
+.blog {
     background: white;
     width: 96%;
     border-radius: 5px;
-    padding: 10px 15px 20px 15px;
+    padding: 10px 15px;
     box-shadow: 3px 4px 3px #888888;
     text-align: left;
 }
-.about_title{
-    width: 95%;
+
+.blog_title {
+    font-size: 24px;
     font-weight: 600;
-    font-size: 20px;
-    padding: 10px 20px;
-    margin: 20px 0 20px 0;
-    border-bottom: 1px solid #191919;
-}
-.description p{
-    margin-top: 5px;
-    padding: 0 0 0 10px;
 }
 
-/*评论区域*/
-.blog_comments{
-    width: 100%;
+.blog_msg {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px  solid gray;
+    margin-bottom: 20px;
 }
-.blog_comments_msg{
-    margin-top: 20px;
-    padding: 10px;
-    display: inline-block;
-    width:100%;
-    text-align: left;
-}
-.blog_comment{
-    width: 95%;
-    background: #d9edf7;
-    border: 1px dashed #7ca4c1;
-    padding: 10px 10px 20px 10px;
-    color: #31708f;
-    text-align: left;
-}
-.blog_comment span{
-    display: inline-block;
-    width: 100%;
-    padding-left: 10px;
-}
-.blog_comment div{
-    display: inline-block;
-    width: 100%;
-    padding-left: 10px;
-    margin-top: 10px;
+.blog_content {
+    padding: 0px 10px 20px 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
 }
 
 .send_comment {
@@ -94,4 +69,40 @@
 
 .send_comment button:hover {
     background: #adadad;
+}
+
+
+.blog_comments {
+    width: 100%;
+}
+
+.blog_comments_msg {
+    margin-top: 20px;
+    padding: 10px;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+}
+
+.blog_comment {
+    width: 95%;
+    background: #d9edf7;
+    border: 1px dashed #7ca4c1;
+    padding: 10px 10px 20px 10px;
+    margin-top: 10px;
+    color: #31708f;
+    text-align: left;
+}
+
+.blog_comment span {
+    display: inline-block;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.blog_comment div {
+    display: inline-block;
+    width: 100%;
+    padding-left: 10px;
+    margin-top: 10px;
 }

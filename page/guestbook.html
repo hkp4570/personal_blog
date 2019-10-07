@@ -5,6 +5,8 @@
     <title>个人博客</title>
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/guestbook.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="./js/axios.js"></script>
 </head>
 <body>
 <header class="header">
@@ -31,25 +33,32 @@
             <p style="color: red;font-size: 14px">博主联系:MzcxNjA0Nzg1</p>
         </div>
 
-        <div class="blog_comments">
-            <span class="blog_comments_msg">留言：目前有66 条留言</span>
-            <div class="blog_comment">
-                <span><b>许寒：</b>发表于 2019年02月13日 20:49[回复]</span>
-                <div>fdfsdafdsafdsafsdaf</div>
-            </div>
-            <div class="blog_comment">
-                <span><b>许寒：</b>发表于 2019年02月13日 20:49[回复]</span>
-                <div>fdfsdafdsafdsafsdaf</div>
-            </div>
-            <div class="blog_comment">
-                <span><b>许寒：</b>发表于 2019年02月13日 20:49[回复]</span>
-                <div>fdfsdafdsafdsafsdaf</div>
-            </div>
-            <div class="blog_comment">
-                <span><b>许寒：</b>发表于 2019年02月13日 20:49[回复]</span>
-                <div>fdfsdafdsafdsafsdaf</div>
+        <div class="blog_comments" id="blog_comments">
+            <span class="blog_comments_msg">当前文章：{{total}} 条留言</span>
+            <div class="blog_comment" v-for="comment in comments">
+                <span><b>{{comment.user_name}}</b>：{{comment.options}} 发表于 {{comment.ctime}} <a style="cursor: pointer" v-on:click="reply(comment.id, comment.user_name)">[回复]</a></span>
+                <div>{{comment.comments}}</div>
             </div>
         </div>
+
+        <div class="send_comment" id="send_comment">
+            <span>发表评论</span>
+            <div>
+                <input type="hidden" id="comment_reply" value="-1">
+                <input type="hidden" id="comment_reply_name" value="0">
+                <input type="text" placeholder="昵称" id="comment_name">
+                <input type="text" placeholder="邮箱（评论被回复时你能收到通知）" id="comment_email">
+            </div>
+            <div>
+                <textarea placeholder="无意义的内容我可能不会回复你" id="comment_content"></textarea>
+            </div>
+            <div>
+                <input type="text" placeholder="验证码" id="comment_code">
+                <span v-html="vcode" v-on:click="changeCode()"></span>
+            </div>
+            <button v-on:click="sendComment()">提交评论</button>
+        </div>
+
     </div>
     <div class="content_right">
         <div class="right_module">
@@ -113,5 +122,7 @@
     </ul>
     <p>Copyright © 2010-2019 </p>
 </footer>
+<script src="./js/guestbook.js"></script>
+<script src="./js/base.js"></script>
 </body>
 </html>
