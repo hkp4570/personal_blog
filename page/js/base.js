@@ -1,7 +1,7 @@
 var randomTags = new Vue({
    el:'#random_tags',
     data:{
-       tags:['affds','fsdf','fsdaf','fadsf','fdsaf','fsd','fsd','fwef','affds','fsdf','fsdaf','fadsf','fdsaf','fsd','fsd','fwef'],
+       tags:[],
     },
     computed:{
         randomColor:function () {
@@ -19,48 +19,75 @@ var randomTags = new Vue({
             }
         }
     },
-    created:{
-        
+    created:function(){
+        //随机tags
+        axios({
+            method: "get",
+            url: "/queryRandomTags"
+        }).then(function (resp) {
+            var result = [];
+            for (var i = 0 ; i < resp.data.data.length ; i ++) {
+                result.push({text:resp.data.data[i].tag, link:"/?tag=" + resp.data.data[i].tag});
+            }
+            randomTags.tags = result;
+        });
     }
 });
 
 var newHot = new Vue({
-    el:'#new_hot',
-    data:{
-        titleList:[
-            {
-                title:'这是一个链接',
-                link:'http://www.baidu.com'
-            },
-            {
-                title:'这是一个链接',
-                link:'http://www.baidu.com'
-            },
-            {
-                title:'这是一个链接',
-                link:'http://www.baidu.com'
-            },
-            {
-                title:'这是一个链接',
-                link:'http://www.baidu.com'
-            },
-            {
-                title:'这是一个链接',
-                link:'http://www.baidu.com'
+    el: "#new_hot",
+    data: {
+        titleList: []
+    },
+    created: function () {
+        axios({
+            method: "get",
+            url: "/queryHotBlog"
+        }).then(function (resp) {
+            var result = [];
+            for (var i = 0 ; i < resp.data.data.length ; i ++) {
+                var temp = {};
+                temp.title = resp.data.data[i].title;
+                temp.link = "/blog_detail.html?bid=" + resp.data.data[i].id;
+                result.push(temp);
             }
-        ]
+            newHot.titleList = result;
+        });
     }
 });
 
 var newComments = new Vue({
-    el:'#new_comments',
-    data:{
-        commentList:[
-            {name:'这里是用户名',date:'2019-9-16',comment:'这里是一大串评论'},
-            {name:'这里是用户名',date:'2019-9-16',comment:'这里是一大串评论'},
-            {name:'这里是用户名',date:'2019-9-16',comment:'这里是一大串评论'},
-            {name:'这里是用户名',date:'2019-9-16',comment:'这里是一大串评论'},
-            {name:'这里是用户名',date:'2019-9-16',comment:'这里是一大串评论'},
+    el: "#new_comments",
+    data: {
+        commentList: [
+            {name: "这里是用户名", date: "2018-10-10", comment: "这里是一大串评论，巴拉巴拉巴拉"},
+            {name: "这里是用户名", date: "2018-10-10", comment: "这里是一大串评论，巴拉巴拉巴拉"},
+            {name: "这里是用户名", date: "2018-10-10", comment: "这里是一大串评论，巴拉巴拉巴拉"},
+            {name: "这里是用户名", date: "2018-10-10", comment: "这里是一大串评论，巴拉巴拉巴拉"},
+            {name: "这里是用户名", date: "2018-10-10", comment: "这里是一大串评论，巴拉巴拉巴拉"},
+            {name: "这里是用户名", date: "2018-10-10", comment: "这里是一大串评论，巴拉巴拉巴拉"},
+            {name: "这里是用户名", date: "2018-10-10", comment: "这里是一大串评论，巴拉巴拉巴拉"},
+            {name: "这里是用户名", date: "2018-10-10", comment: "这里是一大串评论，巴拉巴拉巴拉"},
+            {name: "这里是用户名", date: "2018-10-10", comment: "这里是一大串评论，巴拉巴拉巴拉"},
+            {name: "这里是用户名", date: "2018-10-10", comment: "这里是一大串评论，巴拉巴拉巴拉"},
+            {name: "这里是用户名", date: "2018-10-10", comment: "这里是一大串评论，巴拉巴拉巴拉"}
         ]
+    },
+    created: function () {
+        axios({
+            method: "get",
+            url: "/queryNewComments"
+        }).then(function (resp) {
+            console.log(resp);
+            var result = [];
+            for (var i = 0 ; i < resp.data.data.length ; i ++) {
+                var temp = {};
+                temp.name = resp.data.data[i].user_name;
+                temp.date = resp.data.data[i].ctime;
+                temp.comment = resp.data.data[i].comments;
+                result.push(temp);
+            }
+            newComments.commentList = result;
+        });
     }
 });

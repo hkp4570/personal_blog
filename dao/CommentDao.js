@@ -49,7 +49,24 @@ function queryCommentCountByBlogId(blogId, success) {
     connection.end();
 }
 
+//最新评论
+function queryNewComments(size, success) {
+    var querySql = "select * from comments order by id desc limit ?;";
+    var params = [size];
+    var connection = dbutil.createConnection();
+    connection.connect();
+    connection.query(querySql, params, function (error, result) {
+        if (error == null) {
+            success(result);
+        } else {
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
 
 module.exports.insertComment = insertComment;
 module.exports.queryCommentsByBlogId = queryCommentsByBlogId;
 module.exports.queryCommentCountByBlogId = queryCommentCountByBlogId;
+module.exports.queryNewComments = queryNewComments;

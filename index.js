@@ -19,18 +19,26 @@ app.get('/queryBolgByPage',loader.get('/queryBolgByPage'));
 app.get('/queryBlogCount',loader.get('/queryBlogCount'));
 //博客文章详情
 app.get('/queryBlogById',loader.get('/queryBlogById'));
-
 //添加留言
 app.get('/addComment',loader.get('/addComment'));
-
 //获取随机验证码
 app.get('/queryRandomCode',loader.get('/queryRandomCode'));
-
 //获取留言
 app.get('/queryCommentsByBlogId',loader.get('/queryCommentsByBlogId'));
-
 //获取留言条数
 app.get('/queryCommentsCountByBlogId',loader.get('/queryCommentsCountByBlogId'));
+//获取所有博客文章
+app.get('/queryAllBlog',loader.get('/queryAllBlog'));
+//获取随机标签
+app.get('/queryRandomTags',loader.get('/queryRandomTags'));
+//最近热门博客
+app.get('/queryHotBlog',loader.get('/queryHotBlog'));
+//最新评论
+app.get('/queryNewComments',loader.get('/queryNewComments'));
+//标签与文章对应
+app.get('/queryByTag',loader.get('/queryByTag'));
+//标签总数
+app.get('/queryByTagCount',loader.get('/queryByTagCount'));
 
 app.listen(globalConfig.port,function () {
     console.log('服务已启动');

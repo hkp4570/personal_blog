@@ -51,4 +51,14 @@ function queryCommentsCountByBlogId(request, response) {
 }
 path.set("/queryCommentsCountByBlogId", queryCommentsCountByBlogId);
 
+//最新评论
+function queryNewComments(request, response) {
+    commentDao.queryNewComments(5, function (result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "评论成功", result));
+        response.end();
+    });
+}
+path.set("/queryNewComments", queryNewComments);
+
 module.exports.path = path;
