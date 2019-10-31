@@ -84,8 +84,26 @@ function addViews(id, success) {
     connection.end();
 }
 
+//查询所有博客文章
+function queryAllBlog(success) {
+    var querySql = "select * from blog order by id desc;";
+    var params = [];
+
+    var connection = dbutil.createConnection();
+    connection.connect();
+    connection.query(querySql, params, function (error, result) {
+        if (error == null) {
+            success(result);
+        } else {
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
 module.exports.insertBlog = insertBlog;
 module.exports.queryBlogByPage = queryBlogByPage;
 module.exports.queryBlogCount = queryBlogCount;
 module.exports.queryBlogById = queryBlogById;
 module.exports.addViews = addViews;
+module.exports.queryAllBlog = queryAllBlog;

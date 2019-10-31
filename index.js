@@ -32,6 +32,9 @@ app.get('/queryCommentsByBlogId',loader.get('/queryCommentsByBlogId'));
 //获取留言条数
 app.get('/queryCommentsCountByBlogId',loader.get('/queryCommentsCountByBlogId'));
 
+//查询所有博客文章
+app.get('/queryAllBlog',loader.get('/queryAllBlog'));
+
 app.listen(globalConfig.port,function () {
     console.log('服务已启动');
 });

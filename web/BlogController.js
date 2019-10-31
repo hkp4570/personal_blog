@@ -7,6 +7,16 @@ var respUtil = require('../util/respUtil');
 var url = require('url');
 var path = new Map();
 
+//查询所有博客文章
+function queryAllBlog(request, response) {
+    blogDao.queryAllBlog(function (result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "查询成功", result));
+        response.end();
+    });
+}
+path.set('/queryAllBlog',queryAllBlog);
+
 //博客文章详情
 function queryBlogById(request, response) {
     var params = url.parse(request.url, true).query;
