@@ -7,7 +7,17 @@ var respUtil = require('../util/respUtil');
 var url = require('url');
 var path = new Map();
 
-//查询所有博客文章
+//最近热门博客
+function queryHotBlog(request, response) {
+    blogDao.queryHotBlog(5, function (result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "查询成功", result));
+        response.end();
+    });
+}
+path.set("/queryHotBlog", queryHotBlog);
+
+//获取所有博客文章
 function queryAllBlog(request, response) {
     blogDao.queryAllBlog(function (result) {
         response.writeHead(200);
@@ -15,7 +25,7 @@ function queryAllBlog(request, response) {
         response.end();
     });
 }
-path.set('/queryAllBlog',queryAllBlog);
+path.set("/queryAllBlog", queryAllBlog);
 
 //博客文章详情
 function queryBlogById(request, response) {
